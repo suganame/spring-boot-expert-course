@@ -25,7 +25,7 @@ public class VendasApplication {
 			System.out.println("Existe um cliente com o nome Guilherme? " + exists);
 
 			System.out.println("Buscando Clientes");
-			clientes.findByNomeLike("Gui").forEach(System.out::println);
+			clientes.encontrarPorNome("Gui").forEach(System.out::println);
 
 		};
 	}
