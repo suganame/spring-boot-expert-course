@@ -1,7 +1,6 @@
 package com.suganame.springbootexpert.domain.entities;
 
 import java.util.List;
-import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

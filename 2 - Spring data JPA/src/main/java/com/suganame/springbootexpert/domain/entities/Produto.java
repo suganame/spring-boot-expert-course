@@ -24,4 +24,5 @@ public class Produto {
 
     @Column(name = "preco_unitario")
     private BigDecimal preco;
+
 }
