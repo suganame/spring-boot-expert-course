@@ -2,6 +2,7 @@ package com.suganame.springbootexpert;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -30,9 +31,10 @@ public class VendasApplication {
 
 			pedidos.save(p);
 
-			Cliente cliente = clientes.findClienteFetchPedidos(c.getId());
-			System.out.println(cliente);
-			System.out.println(cliente.getPedidos());
+			pedidos.findByCliente(c).forEach(System.out::println);
+			// Cliente cliente = clientes.findClienteFetchPedidos(c.getId());
+			// System.out.println(cliente);
+			// System.out.println(cliente.getPedidos());
 
 			// clientes.save(new Cliente(null, "Guilherme"));
 			// System.out.println("Salvando Clientes");
