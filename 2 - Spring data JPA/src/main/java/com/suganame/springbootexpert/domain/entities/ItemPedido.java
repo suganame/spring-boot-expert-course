@@ -26,6 +26,6 @@ public class ItemPedido {
     @JoinColumn(name = "produto_id")
     private Produto produto;
 
-    @Column(name = "quantidade", length = 20, precision = 2)
+    @Column(name = "quantidade", precision = 20, scale = 2)
     private Integer quantidade;
 }
