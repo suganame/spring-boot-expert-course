@@ -24,14 +24,14 @@ public class VendasApplication {
 			Cliente c = new Cliente("Guilherme");
 			clientes.save(c);
 
-			Pedido p = new Pedido();
-			p.setCliente(c);
-			p.setDataPedido(LocalDate.now());
-			p.setTotal(BigDecimal.valueOf(100));
+			// Pedido p = new Pedido();
+			// p.setCliente(c);
+			// p.setDataPedido(LocalDate.now());
+			// p.setTotal(BigDecimal.valueOf(100));
 
-			pedidos.save(p);
+			// pedidos.save(p);
 
-			pedidos.findByCliente(c).forEach(System.out::println);
+			// pedidos.findByCliente(c).forEach(System.out::println);
 			// Cliente cliente = clientes.findClienteFetchPedidos(c.getId());
 			// System.out.println(cliente);
 			// System.out.println(cliente.getPedidos());
