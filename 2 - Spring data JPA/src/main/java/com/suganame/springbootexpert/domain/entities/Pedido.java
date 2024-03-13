@@ -41,5 +41,4 @@ public class Pedido {
         return "Pedido [id=" + id + ", dataPedido=" + dataPedido + ", total=" + total + "]";
     }
 
-    
 }
