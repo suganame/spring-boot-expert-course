@@ -37,6 +37,11 @@ public class Cliente {
     @Column(name = "nome", length = 100)
     private String nome;
 
+    @Nonnull
+    @Column(name = "cpf", length = 11)
+    private String cpf;
+
+
     @JsonIgnore
     @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
     private final List<Pedido> pedidos = new ArrayList<>();
