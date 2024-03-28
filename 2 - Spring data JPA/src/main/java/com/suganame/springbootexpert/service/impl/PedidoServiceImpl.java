@@ -13,6 +13,7 @@ import com.suganame.springbootexpert.domain.entities.Cliente;
 import com.suganame.springbootexpert.domain.entities.ItemPedido;
 import com.suganame.springbootexpert.domain.entities.Pedido;
 import com.suganame.springbootexpert.domain.entities.Produto;
+import com.suganame.springbootexpert.domain.enums.StatusPedido;
 import com.suganame.springbootexpert.domain.repositories.Clientes;
 import com.suganame.springbootexpert.domain.repositories.ItensPedido;
 import com.suganame.springbootexpert.domain.repositories.Pedidos;
@@ -50,6 +51,7 @@ public class PedidoServiceImpl implements PedidoService {
         pedido.setTotal(dto.getTotal());
         pedido.setDataPedido(LocalDate.now());
         pedido.setCliente(cliente);
+        pedido.setStatus(StatusPedido.REALIZADO);
 
         List<ItemPedido> itensPedido = this.serializeItems(pedido, dto.getItems());
 

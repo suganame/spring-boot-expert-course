@@ -52,6 +52,7 @@ public class PedidoController {
                 .cpf(pedido.getCliente().getCpf())
                 .nomeCliente(pedido.getCliente().getNome())
                 .total(pedido.getTotal())
+                .status(pedido.getStatus().name())
                 .itens(serialize(pedido.getItens()))
                 .build();
     }
