@@ -1,8 +1,12 @@
 package com.suganame.springbootexpert.rest.dtos;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ItemPedidoDTO {
     private Integer produto;
     private Integer quantidade;
