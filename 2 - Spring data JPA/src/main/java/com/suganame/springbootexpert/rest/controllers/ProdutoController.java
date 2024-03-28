@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.suganame.springbootexpert.domain.entities.Cliente;
 import com.suganame.springbootexpert.domain.entities.Produto;
 import com.suganame.springbootexpert.domain.repositories.Produtos;
 
