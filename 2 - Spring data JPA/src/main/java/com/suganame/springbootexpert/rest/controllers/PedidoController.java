@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,6 +20,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.suganame.springbootexpert.domain.entities.ItemPedido;
 import com.suganame.springbootexpert.domain.entities.Pedido;
+import com.suganame.springbootexpert.domain.enums.StatusPedido;
+import com.suganame.springbootexpert.rest.dtos.AtualizacaoStatusPedidoDTO;
 import com.suganame.springbootexpert.rest.dtos.InformacaoItemPedidoDTO;
 import com.suganame.springbootexpert.rest.dtos.InformacoesPedidoDTO;
 import com.suganame.springbootexpert.rest.dtos.PedidoDTO;
@@ -42,6 +45,13 @@ public class PedidoController {
     public InformacoesPedidoDTO getById(@PathVariable Integer id) {
         return service.obterPedidoCompleto(id).map(p -> this.serialize(p))
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Pedido não encontrado."));
+    }
+
+    @PatchMapping("{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateStatus(@PathVariable Integer id, @RequestBody AtualizacaoStatusPedidoDTO dto) {
+        String novoStatus = dto.getNovoStatus();
+        service.atualizaStatus(id, StatusPedido.valueOf(novoStatus));
     }
 
     private InformacoesPedidoDTO serialize(Pedido pedido) {

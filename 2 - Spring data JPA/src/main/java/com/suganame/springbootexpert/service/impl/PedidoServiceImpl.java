@@ -18,6 +18,7 @@ import com.suganame.springbootexpert.domain.repositories.Clientes;
 import com.suganame.springbootexpert.domain.repositories.ItensPedido;
 import com.suganame.springbootexpert.domain.repositories.Pedidos;
 import com.suganame.springbootexpert.domain.repositories.Produtos;
+import com.suganame.springbootexpert.exception.PedidoNaoEncontradoException;
 import com.suganame.springbootexpert.exception.RegraNegocioException;
 import com.suganame.springbootexpert.rest.dtos.ItemPedidoDTO;
 import com.suganame.springbootexpert.rest.dtos.PedidoDTO;
@@ -85,5 +86,17 @@ public class PedidoServiceImpl implements PedidoService {
     @Override
     public Optional<Pedido> obterPedidoCompleto(Integer id) {
         return repository.findByIdFetchItens(id);
+    }
+
+    @Override
+    @Transactional
+    public void atualizaStatus(Integer id, StatusPedido statusPedido) {
+        repository
+            .findById(id)
+            .map(pedido -> {
+                pedido.setStatus(statusPedido);
+                return repository.save(pedido);
+            })
+            .orElseThrow(() -> new PedidoNaoEncontradoException(null));
     }
 }
