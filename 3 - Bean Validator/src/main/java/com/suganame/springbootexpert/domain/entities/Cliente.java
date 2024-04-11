@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.annotation.Nonnull;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -14,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,11 +29,10 @@ public class Cliente {
     @Column(name = "id")
     private Integer id;
 
-    @Nonnull
     @Column(name = "nome", length = 100)
+    @NotEmpty(message = "Campo nome é obrigatório")
     private String nome;
 
-    @Nonnull
     @Column(name = "cpf", length = 11)
     private String cpf;
 

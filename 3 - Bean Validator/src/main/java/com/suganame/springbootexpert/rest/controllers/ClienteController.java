@@ -20,6 +20,8 @@ import org.springframework.web.server.ResponseStatusException;
 import com.suganame.springbootexpert.domain.entities.Cliente;
 import com.suganame.springbootexpert.domain.repositories.Clientes;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/clientes")
 public class ClienteController {
@@ -36,7 +38,7 @@ public class ClienteController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Cliente save(@RequestBody Cliente cliente) {
+    public Cliente save(@RequestBody @Valid Cliente cliente) {
         return clientes.save(cliente);
     }
 
