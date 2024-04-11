@@ -23,6 +23,8 @@ import org.springframework.web.server.ResponseStatusException;
 import com.suganame.springbootexpert.domain.entities.Produto;
 import com.suganame.springbootexpert.domain.repositories.Produtos;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/produtos")
 public class ProdutoController {
@@ -32,13 +34,13 @@ public class ProdutoController {
 
     @PostMapping
     @ResponseStatus(CREATED)
-    public Produto save(@RequestBody Produto produto) {
+    public Produto save(@RequestBody @Valid Produto produto) {
         return repository.save(produto);
     }
 
     @PutMapping("{id}")
     @ResponseStatus(NO_CONTENT)
-    public void update(@PathVariable Integer id, @RequestBody Produto produto) {
+    public void update(@PathVariable Integer id, @RequestBody @Valid Produto produto) {
         repository.findById(id).map(p -> {
             produto.setId(p.getId());
             repository.save(produto);
